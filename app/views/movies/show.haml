@@ -1,0 +1,35 @@
+%h1= @movie.name
+%h4= @movie.description
+
+
+%h1 Playing:
+Tuesday, July 9 At:
+- @movie.showings[0..3].each do |showing|
+	%ul
+		%li
+			= showing.hour
+			= link_to "Buy Tickets for this showing", "/showings/#{showing.id}"
+
+Wednesday, July 10 At:
+- @movie.showings[4..7].each do |showing|
+	%ul
+		%li
+			= showing.hour
+
+Thursday, July 11 At:
+- @movie.showings[8..11].each do |showing|
+	%ul
+		%li
+			= showing.hour
+
+Friday, July 12 At:
+- @movie.showings[12..15].each do |showing|
+	%ul
+		%li
+			= showing.hour
+
+Saturday, July 13 At:
+- @movie.showings[15..18].each do |showing|
+	%ul
+		%li
+			= showing.hour
