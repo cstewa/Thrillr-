@@ -1,3 +1,5 @@
+%p#notice= notice
+
 %h1= @movie.name
 %h4= @movie.description
 
@@ -15,21 +17,25 @@ Wednesday, July 10 At:
 	%ul
 		%li
 			= showing.hour
+			= link_to "Buy Tickets for this showing", "/showings/#{showing.id}"
 
 Thursday, July 11 At:
 - @movie.showings[8..11].each do |showing|
 	%ul
 		%li
 			= showing.hour
+			= link_to "Buy Tickets for this showing", "/showings/#{showing.id}"
 
 Friday, July 12 At:
 - @movie.showings[12..15].each do |showing|
 	%ul
 		%li
 			= showing.hour
+			= link_to "Buy Tickets for this showing", "/showings/#{showing.id}"
 
 Saturday, July 13 At:
 - @movie.showings[15..18].each do |showing|
 	%ul
 		%li
 			= showing.hour
+			= link_to "Buy Tickets for this showing", "/showings/#{showing.id}"

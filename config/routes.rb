@@ -1,17 +1,10 @@
 Thrillr::Application.routes.draw do
-  get "showings/index"
 
-  get "showings/create"
+  resources :sessions
 
-  get "showings/new"
+  get "/tickets/:id" => "tickets#update"
 
-  get "showings/edit"
-
-  get "showings/update"
-
-  get "showings/destroy"
-
-  get "showings/show"
+  resources :users
 
   resources :movies
 

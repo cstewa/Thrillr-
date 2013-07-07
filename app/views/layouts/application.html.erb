@@ -8,6 +8,17 @@
 </head>
 <body>
 
+
+<% if current_user %>
+	Logged in as: <%=link_to current_user.email, user_path(current_user.id) %> 
+	<%= link_to "Log out", "/sessions/#{current_user.id}", :method => "delete" %>
+<% else %>
+	<%= link_to "Sign Up", "/users/new" %>
+	<%= link_to "Log in", new_session_path %> 
+<% end %>
+
+<%= link_to "All Movies", "/movies" %>
+
 <%= yield %>
 
 </body>

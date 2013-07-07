@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h3> Hi, <%=current_user.name%>! </h3>
+
+<h4> Your Tickets: </h4>
+
+<ul>
+	<% current_user.showings.uniq.each do |showing| %>
+	<li>
+		<%= showing.movie.name %> </br>
+		<%= showing.day %>
+		<%= showing.hour %> </br>
+		<% showing.tickets.where(:user_id => current_user.id).each do |ticket| %>
+			<%= ticket.seat_number %>
+			<% end %>
+		</br>
+		<%= link_to "Buy another seat for this showing.", "/showings/#{showing.id}" %>
+	</li>	
+	</br>
+	<% end %>
+<ul>
+

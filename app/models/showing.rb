@@ -3,4 +3,5 @@ class Showing < ActiveRecord::Base
 
   belongs_to :movie
   has_many :tickets
+  has_many :users, :through => :tickets
 end

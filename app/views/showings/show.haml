@@ -1,0 +1,29 @@
+%p#notice= notice
+
+%h1= @showing.movie.name
+%h3
+	Playing on
+	= @showing.day
+	At
+	= @showing.hour
+
+%em Click on a seat to purchase it
+%br
+%br
+
+Number of tickets available: 
+=@showing.tickets.where(:user_id => nil).length
+
+%br
+Seats available: 
+-@showing.tickets.each do |ticket|
+	=link_to ticket.seat_number, "/tickets/#{ticket.id}"
+
+%br
+Price: $7.00
+
+
+%br
+%br
+%br
+= link_to "Back to All Showings for #{@showing.movie.name}", "/movies/#{@showing.movie.id}"

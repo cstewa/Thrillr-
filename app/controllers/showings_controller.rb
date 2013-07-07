@@ -18,5 +18,9 @@ class ShowingsController < ApplicationController
   end
 
   def show
+    @showing = Showing.find(params[:id])
+    if !current_user 
+      redirect_to movie_path(@showing.movie.id), :notice => "You must be logged in to purchase tickets."
+    end
   end
 end
