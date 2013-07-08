@@ -1,0 +1,10 @@
+$(document ).ready(function() {
+
+
+$("h1").prepend("<em>Ticket successfully purchased!</em></br>")
+
+
+$("#<%=@ticket.seat_number%>").text("<%=@ticket.seat_number%>")
+
+});
+

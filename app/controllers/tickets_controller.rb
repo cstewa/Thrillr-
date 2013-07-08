@@ -2,6 +2,12 @@ class TicketsController < ApplicationController
   def index
   end
 
+  def too_many
+  end
+
+  def already_purchased
+  end
+
   def show
   end
 
@@ -13,11 +19,16 @@ class TicketsController < ApplicationController
 
   def update
     @ticket = Ticket.find(params[:id])
-    if current_user.tickets.where(:showing_id => @ticket.showing.id).length > 4
-      redirect_to showing_path(@ticket.showing.id), :notice => "Sorry, you can only purchase up to five tickets for this showing."
-    else
-      @ticket.update_attributes(:user_id => current_user.id)
-      redirect_to user_path(current_user.id), :notice => "Ticket purchased!"
+
+    respond_to do |format|
+      if current_user.tickets.where(:showing_id => @ticket.showing.id).length > 4
+        format.js { render :action => "too_many" } 
+      elsif @ticket.user_id == nil
+        @ticket.update_attributes(:user_id => current_user.id)
+        format.js {render :action => "show" }
+      else 
+        format.js { render :action => "already_purchased" }
+      end
     end
   end
 

@@ -7,7 +7,9 @@
 	At
 	= @showing.hour
 
-%em Click on a seat to purchase it
+%em Click on a seat to purchase it.
+%br
+%em Tickets in yellow have already been purchased.
 %br
 %br
 
@@ -15,12 +17,17 @@ Number of tickets available:
 =@showing.tickets.where(:user_id => nil).length
 
 %br
-Seats available: 
--@showing.tickets.each do |ticket|
-	=link_to ticket.seat_number, "/tickets/#{ticket.id}"
-
-%br
 Price: $7.00
+%br
+Seats available: 
+%div.all_seats
+	-@showing.tickets.sort.each do |ticket|
+		%div.seat{:id => "#{ticket.seat_number}"}
+			-if ticket.user_id == nil 
+				= link_to ticket.seat_number, "/tickets/#{ticket.id}", :remote => true
+			-else 
+				= ticket.seat_number
+
 
 
 %br

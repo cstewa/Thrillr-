@@ -15,3 +15,36 @@
 ul {
 	list-style: none
 }
+
+.all_seats {
+	width: 750px;
+	height: 400px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.seat {
+	width: 40px;
+	height: 40px;
+	border: solid;
+	float: left;
+	margin-bottom: 15px;
+	margin-right: 10px;
+}
+
+.seat.yellow {
+	background-color: yellow;
+}
+
+.seat:nth-child(7), 
+.seat:nth-child(20),
+.seat:nth-child(33),
+.seat:nth-child(46),
+.seat:nth-child(59),
+.seat:nth-child(72) {
+	margin-right: 30px;
+}
+
+.seat a{
+	margin-left: 15%;
+}
